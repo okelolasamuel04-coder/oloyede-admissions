@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oloyede Admissions — We help you get in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#e9e3d6;
+    --paper-dim:#ddd5c2;
+    --ink:#1f3b32;
+    --ink-soft:#2c4a3f;
+    --gold:#a5792f;
+    --gold-soft:#c99a52;
+    --line:#c4b99f;
+    --white:#fbf8f2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Work Sans',sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Newsreader',serif;font-weight:600;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--gold-soft);color:var(--ink);}
+
+  /* seal mark */
+  .seal{
+    width:30px;height:30px;border-radius:50%;
+    border:1.5px solid currentColor;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Newsreader',serif;font-style:italic;font-size:0.85rem;
+  }
+
+  header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;max-width:1080px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Newsreader',serif;font-weight:600;font-size:1.2rem;}
+  .navlinks{display:flex;gap:32px;font-size:0.92rem;}
+  .navlinks a{border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .15s;}
+  .navlinks a:hover{border-color:var(--gold);}
+  .nav-cta{background:var(--ink);color:var(--white);padding:10px 20px;font-size:0.86rem;font-weight:500;border:1px solid var(--ink);}
+  .nav-cta:hover{background:transparent;color:var(--ink);}
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* hero */
+  .hero{padding:100px 0 84px;border-bottom:1px solid var(--line);}
+  .hero .kicker{
+    font-size:0.82rem;letter-spacing:0.02em;color:var(--gold);
+    display:flex;align-items:center;gap:10px;margin-bottom:24px;font-weight:500;
+  }
+  .hero .kicker::before{content:'';width:20px;height:1px;background:var(--gold);}
+  .hero h1{font-size:3.1rem;line-height:1.1;max-width:16ch;}
+  .hero p.lede{margin-top:22px;font-size:1.1rem;color:var(--ink-soft);max-width:52ch;}
+  .hero-cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn-primary{background:var(--ink);color:var(--white);padding:14px 26px;font-weight:500;font-size:0.95rem;border:1px solid var(--ink);}
+  .btn-primary:hover{background:transparent;color:var(--ink);}
+  .btn-ghost{padding:14px 26px;font-size:0.95rem;border:1px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--white);}
+  .hero-stats{display:flex;gap:48px;margin-top:56px;flex-wrap:wrap;}
+  .stat .num{font-family:'Newsreader',serif;font-size:2rem;color:var(--gold);}
+  .stat .label{font-size:0.83rem;color:var(--ink-soft);margin-top:2px;}
+
+  /* section shell */
+  section{padding:84px 0;}
+  .section-head{margin-bottom:44px;max-width:60ch;}
+  .section-head .kicker{font-size:0.8rem;color:var(--gold);font-weight:500;margin-bottom:10px;display:block;}
+  .section-head h2{font-size:2rem;}
+  .section-head p{margin-top:12px;color:var(--ink-soft);font-size:0.98rem;}
+
+  /* services */
+  .services{background:var(--paper-dim);}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .service-card{background:var(--paper-dim);padding:34px 28px;}
+  .service-card .tag{font-size:0.78rem;color:var(--gold);font-weight:500;}
+  .service-card h3{font-size:1.25rem;margin:12px 0 10px;}
+  .service-card p{font-size:0.92rem;color:var(--ink-soft);}
+  @media(max-width:820px){.service-grid{grid-template-columns:1fr;}}
+
+  /* how it works */
+  .steps{border-top:1px solid var(--line);}
+  .step-row{
+    display:grid;grid-template-columns:64px 1fr;gap:24px;
+    padding:30px 0;border-bottom:1px solid var(--line);
+  }
+  .step-num{font-family:'Newsreader',serif;font-style:italic;font-size:1.6rem;color:var(--gold);}
+  .step-row h3{font-size:1.2rem;margin-bottom:6px;}
+  .step-row p{font-size:0.92rem;color:var(--ink-soft);max-width:58ch;}
+
+  /* results */
+  .results .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+  .quote{border-left:2px solid var(--gold);padding-left:20px;}
+  .quote p{font-family:'Newsreader',serif;font-size:1.15rem;font-style:italic;line-height:1.45;}
+  .quote cite{display:block;margin-top:14px;font-family:'Work Sans';font-style:normal;font-size:0.82rem;color:var(--ink-soft);}
+  @media(max-width:820px){.results .wrap{grid-template-columns:1fr;}}
+
+  /* contact */
+  .contact{background:var(--ink);color:var(--white);}
+  .contact .section-head h2,.contact .section-head p{color:var(--white);}
+  .contact .section-head p{color:#c9d3ce;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;}
+  .contact-info{display:flex;flex-direction:column;gap:26px;}
+  .contact-info .item .label{font-size:0.78rem;color:var(--gold-soft);margin-bottom:4px;}
+  .contact-info .item .val{font-size:1.05rem;}
+  .contact-info .item a:hover{color:var(--gold-soft);}
+
+  form{display:flex;flex-direction:column;gap:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  label{font-size:0.8rem;color:#c9d3ce;margin-bottom:6px;display:block;}
+  input,select,textarea{
+    width:100%;background:var(--ink-soft);border:1px solid #3d5c50;
+    color:var(--white);padding:12px 14px;font-family:'Work Sans';font-size:0.95rem;
+  }
+  input::placeholder,textarea::placeholder{color:#8fa79c;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);outline-offset:1px;border-color:var(--gold-soft);}
+  textarea{resize:vertical;min-height:100px;}
+  .submit-btn{
+    background:var(--gold);color:var(--ink);border:1px solid var(--gold);
+    padding:14px 26px;font-weight:600;font-size:0.95rem;cursor:pointer;margin-top:6px;
+  }
+  .submit-btn:hover{background:transparent;color:var(--gold);}
+  .form-note{font-size:0.78rem;color:#8fa79c;}
+  .confirm{
+    display:none;background:var(--ink-soft);border:1px solid var(--gold-soft);
+    padding:18px 20px;font-size:0.92rem;
+  }
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+
+  footer{background:var(--ink);color:#8fa79c;padding:32px 0;border-top:1px solid #3d5c50;font-size:0.82rem;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand"><div class="seal">O</div>Oloyede Admissions</div>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#results">Results</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">ADMISSIONS GUIDANCE, START TO OFFER LETTER</div>
+    <h1>Applying is confusing. Getting in shouldn't be.</h1>
+    <p class="lede">We work one-on-one with students applying to study-abroad programs, universities, and private K-12 schools — building the strategy, the essays, and the timeline together, from the first form to the offer letter.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#contact">Tell us where you're applying</a>
+      <a class="btn-ghost" href="#how">See how it works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">400+</div><div class="label">students placed</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">tracks: abroad, university, K–12</div></div>
+      <div class="stat"><div class="num">1:1</div><div class="label">every case, no group cohorts</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">WHO WE WORK WITH</span>
+      <h2>Three tracks, one process</h2>
+      <p>Wherever you're applying, the guidance is the same in spirit: an honest read on your chances, a plan, and someone checking your work before it's submitted.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="tag">STUDY ABROAD</div>
+        <h3>International applications</h3>
+        <p>Program shortlisting, visa-aware timelines, statement of purpose review, and scholarship applications for students applying outside their home country.</p>
+      </div>
+      <div class="service-card">
+        <div class="tag">COLLEGE &amp; UNIVERSITY</div>
+        <h3>Undergrad &amp; graduate</h3>
+        <p>School list building, essay development, recommendation coordination, and interview prep for college and university admission.</p>
+      </div>
+      <div class="service-card">
+        <div class="tag">K–12</div>
+        <h3>Private &amp; independent schools</h3>
+        <p>Guidance for families navigating school placement tests, parent interviews, and application timelines for younger students.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">HOW IT WORKS</span>
+      <h2>Five steps, from first call to enrollment</h2>
+    </div>
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div><h3>Free intro call</h3><p>15 minutes to hear where you're applying and whether we're a good fit — no obligation either way.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div><h3>Strategy &amp; school list</h3><p>We build a realistic list — reach, match, and safety options — based on your goals, budget, and timeline.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div><h3>Build the application</h3><p>Essays, forms, recommendation requests, and test or portfolio prep, with drafts reviewed round by round.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div><h3>Submit &amp; follow up</h3><p>We track every deadline and portal, and prep you for interviews where they're part of the process.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">5</div>
+        <div><h3>Decide &amp; enroll</h3><p>When offers come in, we help you compare them and handle enrollment, deposit, and (where relevant) visa steps.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results" id="results">
+  <div class="wrap">
+    <div class="section-head" style="max-width:100%;">
+      <span class="kicker">FROM STUDENTS WE'VE WORKED WITH</span>
+      <h2>Some recent outcomes</h2>
+    </div>
+    <div class="wrap" style="padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;">
+      <div class="quote">
+        <p>"I had no idea how different a visa-aware timeline needed to be. Having someone track that for me was the whole thing."</p>
+        <cite>— R. Amadi, admitted abroad, 2026</cite>
+      </div>
+      <div class="quote">
+        <p>"They told me my first school list was too safe. That one conversation changed where I ended up."</p>
+        <cite>— S. Patel, admitted to university, 2026</cite>
+      </div>
+      <div class="quote">
+        <p>"As a parent, I just wanted someone to tell us honestly if we were ready. We were, once we had a plan."</p>
+        <cite>— parent of K–12 applicant, 2026</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">GET IN TOUCH</span>
+      <h2>Tell us what you're applying for</h2>
+      <p>Fill in the form, or reach out directly — we typically reply within one business day.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="item">
+          <div class="label">EMAIL</div>
+          <div class="val"><a href="mailto:okelolasamuel04@gmail.com">okelolasamuel04@gmail.com</a></div>
+        </div>
+        <div class="item">
+          <div class="label">PHONE</div>
+          <div class="val"><a href="tel:+10000000000">090 3399 7971</a> </div>
+        </div>
+        <div class="item">
+          <div class="label">RESPONSE TIME</div>
+          <div class="val">Within 1 business day</div>
+        </div>
+      </div>
+      <div>
+        <form id="contactForm">
+          <div class="form-row">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel" placeholder="With country code">
+            </div>
+            <div>
+              <label for="track">Applying for</label>
+              <select id="track" name="track" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Study abroad</option>
+                <option>College / University</option>
+                <option>K–12 / private school</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="message">Tell us a bit about your goals</label>
+            <textarea id="message" name="message" placeholder="Where are you hoping to apply, and by when?" required></textarea>
+          </div>
+          <button class="submit-btn" type="submit">Send message</button>
+          <p class="form-note">Once your Formspree endpoint is added below (replace YOUR_FORM_ID), submissions will land in okelolasamuel04@gmail.com.</p>
+          <div class="confirm" id="confirmBox">Thanks — your message has been sent. We'll follow up by email shortly.</div>
+          <div class="confirm" id="errorBox" style="border-color:#c47a4a;">Something went wrong sending that — please email us directly instead.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Oloyede Admissions — Contact us.</div>
+    <div>hello@oloyedeadmissions.com</div>
+  </div>
+</footer>
+
+<script>
+  // Replace YOUR_FORM_ID below with the ID Formspree gives you after you create a form
+  // at formspree.io (sign up with okelolasamuel04@gmail.com), e.g. "mzzabcde".
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwlvnzbd';
+
+  const form = document.getElementById('contactForm');
+  const confirmBox = document.getElementById('confirmBox');
+  const errorBox = document.getElementById('errorBox');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    confirmBox.style.display = 'none';
+    errorBox.style.display = 'none';
+
+    if (FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
+      // Not connected yet — just show the local confirmation so the demo still works.
+      confirmBox.style.display = 'block';
+      form.reset();
+      return;
+    }
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (response.ok) {
+        confirmBox.style.display = 'block';
+        form.reset();
+      } else {
+        errorBox.style.display = 'block';
+      }
+    } catch (err) {
+      errorBox.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
